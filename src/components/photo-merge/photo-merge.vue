@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import mergeImages from 'merge-images';
+import skaler from 'skaler';
 
 interface PhotoMerge {
 	previewImage: string;
@@ -27,30 +28,62 @@ export default {
 	},
 	methods: {
 		previewPhoto(event: Event) {
+			const size = 600;
 			const target =  event.target as HTMLInputElement;
 			const files = target.files;
 			if(files && files.item(0)){
 				const {avatarImage} = this as unknown as PhotoMerge;
 				(this as unknown as PhotoMerge).photoName = `avatar-s21-${new Date().getTime()}.png`;
 
-				mergeImages([
-					{
-						src: URL.createObjectURL(files.item(0)),
-						x: 0,
-						y: 0,
-					},
-					{
-						src: avatarImage,
-						x: 0,
-						y: 0,
-					},
-				], {
-					width: 600,
-					height: 600,
-					format: "png"
-				})
-				.then((b64) => (this as unknown as PhotoMerge).previewImage = b64);
-			
+				const tmpImage = new Image();
+				tmpImage.onload = () => {
+					console.log(tmpImage.width, tmpImage.height);
+					const {width, height} = tmpImage;
+					let x = 0;
+					let y = 0;
+					const config: {
+						[x: string]: number;
+					} = {};
+
+					if(height > width){
+						config["height"] = size;
+					}else{
+						config["width"] = size;
+					}
+
+					skaler(files.item(0), config)
+						.then(file => {
+							const tmpImgResized = new Image();
+							tmpImgResized.onload = () => {
+
+								if(height > width){
+									x = (size / 2 )- (tmpImgResized.width / 2);
+								}else{
+									y = (size / 2 )- (tmpImgResized.height / 2);
+								}
+
+								mergeImages([
+									{
+										src: URL.createObjectURL(file),
+										x,
+										y,
+									},
+									{
+										src: avatarImage,
+										x: 0,
+										y: 0,
+									},															
+								], {
+									height: size,
+									width: size,
+									format: "png"
+								})
+								.then((b64) => (this as unknown as PhotoMerge).previewImage = b64);
+							}
+							tmpImgResized.src = URL.createObjectURL(file);
+						});
+				}
+				tmpImage.src = URL.createObjectURL(files.item(0));		
 
 			}
 		}
@@ -77,7 +110,7 @@ export default {
 		}
 
 		> p > img {
-			border: 1px solid red;
+			border: 1px solid greenyellow;
 			display: block;
 			margin: 0px auto;
 		}

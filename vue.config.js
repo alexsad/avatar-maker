@@ -1,7 +1,7 @@
 module.exports = {
     pwa: {
 		themeColor: '#800080',
-		name:'Secret Santa'
+		name:'Avatar Maker'
 	},
 
     publicPath: process.env.NODE_ENV === 'production'
