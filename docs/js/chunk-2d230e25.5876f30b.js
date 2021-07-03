@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d230e25"],{edd4:function(a){a.exports=JSON.parse('{"app":{"title":"Avatar Make","upload":"Upload your picture","download":"Download your avatar"}}')}}]);
+//# sourceMappingURL=chunk-2d230e25.5876f30b.js.map

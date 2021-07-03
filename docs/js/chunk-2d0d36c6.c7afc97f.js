@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0d36c6"],{"5d67":function(a){a.exports=JSON.parse('{"app":{"title":"Criador de Avatar","upload":"Carregar uma foto","download":"Baixar o avatar"}}')}}]);
+//# sourceMappingURL=chunk-2d0d36c6.c7afc97f.js.map
