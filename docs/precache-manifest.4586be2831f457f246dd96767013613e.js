@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9a3d432087be9093dae3",
-    "url": "/avatar-maker/css/app.51043612.css"
+    "revision": "8a07f3d48f0bf16124a9",
+    "url": "/avatar-maker/css/app.f56094b2.css"
   },
   {
     "revision": "e3a79b0d0924d34522675f5196fad777",
@@ -12,12 +12,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/avatar-maker/img/guia-s21.62e1247e.png"
   },
   {
-    "revision": "9ca63e5823115d9dccaf63a836c082ef",
+    "revision": "f028e1c121dbc1c4fc7c6faf38bd15e2",
     "url": "/avatar-maker/index.html"
   },
   {
-    "revision": "9a3d432087be9093dae3",
-    "url": "/avatar-maker/js/app.056297ce.js"
+    "revision": "8a07f3d48f0bf16124a9",
+    "url": "/avatar-maker/js/app.aded5be1.js"
   },
   {
     "revision": "d9902b82269038ffb589",
@@ -32,11 +32,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/avatar-maker/js/chunk-2d230e25.5876f30b.js"
   },
   {
-    "revision": "ca55f3bcb2dfbedc59c1",
-    "url": "/avatar-maker/js/chunk-vendors.e46ecbe6.js"
+    "revision": "07b87edd8c1da80ba367",
+    "url": "/avatar-maker/js/chunk-vendors.d9b631ac.js"
   },
   {
-    "revision": "118635a0dd779af31361944c0dc03620",
+    "revision": "3cc97ee870c4ddbe2a3c56746c0fd58c",
     "url": "/avatar-maker/manifest.json"
   },
   {
