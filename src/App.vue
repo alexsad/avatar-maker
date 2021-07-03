@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<a class="logo" href="https://alexsad.github.io/secret-friend-list/">
+		<a class="logo" href="https://alexsad.github.io/avatar-maker/">
 			<img alt="Site logo" src="./assets/gift-box-white.svg">
 		</a>
 		<h1>{{$translate('app.title')}}</h1>
@@ -9,7 +9,7 @@
 		<PhotoMerge/>
 	</main>
 	<!-- <footer >
-		<a href="https://github.com/alexsad/secret-friend-list">github project</a>
+		<a href="https://github.com/alexsad/avatar-maker">github project</a>
 	</footer> -->
 </template>
 
