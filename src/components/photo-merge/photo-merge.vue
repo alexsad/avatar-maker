@@ -3,92 +3,63 @@
 	div.upload-foto.btn.is-active {{$translate('app.upload')}}
 		input.btn(type="file" @change="previewPhoto")
 	p
-		img(v-if="previewImage" :src="previewImage" width="400" height="400")
+		.preview-image(ref="previewBoxImage")
+			.photo-bg-img(:class="photoOrientation" :style="{backgroundImage: 'url('+bgImg+')'}")
+			.photo-img(:class="photoOrientation" :style="{backgroundImage: 'url('+photo+')'}")
+			.avatar-logo(:style="{backgroundImage: 'url('+avatarImage+')'}")
 	p
 		a.btn.is-active(v-if="previewImage" :download="photoName" :href="previewImage" title="download") {{$translate('app.download')}}
 </template>
 
 <script lang="ts">
-import mergeImages from 'merge-images';
-import skaler from 'skaler';
+import { defineComponent } from '@vue/runtime-core';
+import {toPng} from 'html-to-image';
 
-interface PhotoMerge {
-	previewImage: string;
-	photoName: string;
-	avatarImage: string;
-}
-
-export default {
+export default defineComponent({
 	data(){
 		return {
 			previewImage: '',
 			photoName: '',
-			avatarImage: require('./assets/guia-s21.png')
+			avatarImage: require('./assets/guia-s22.png'),
+			bgImg: '',
+			photo: '',
+			photoOrientation: '',
 		}
 	},
 	methods: {
 		previewPhoto(event: Event) {
-			const size = 600;
-			const target =  event.target as HTMLInputElement;
-			const files = target.files;
-			if(files && files.item(0)){
-				const {avatarImage} = this as unknown as PhotoMerge;
-				(this as unknown as PhotoMerge).photoName = `avatar-s21-${new Date().getTime()}.png`;
+			const {files} =  event.target as HTMLInputElement;
 
+			if(files && files.item(0)){
+
+				this.bgImg = URL.createObjectURL(files.item(0));
+				this.photo = URL.createObjectURL(files.item(0));
+				this.photoName = `avatar-s22-${new Date().getTime()}.png`;
 				const tmpImage = new Image();
+
 				tmpImage.onload = () => {
 					console.log(tmpImage.width, tmpImage.height);
 					const {width, height} = tmpImage;
-					let x = 0;
-					let y = 0;
-					const config: {
-						[x: string]: number;
-					} = {};
 
 					if(height > width){
-						config["height"] = size;
+						this.photoOrientation = 'vertical';
 					}else{
-						config["width"] = size;
+						this.photoOrientation = 'horizontal';
 					}
 
-					skaler(files.item(0), config)
-						.then(file => {
-							const tmpImgResized = new Image();
-							tmpImgResized.onload = () => {
-
-								if(height > width){
-									x = (size / 2 )- (tmpImgResized.width / 2);
-								}else{
-									y = (size / 2 )- (tmpImgResized.height / 2);
-								}
-
-								mergeImages([
-									{
-										src: URL.createObjectURL(file),
-										x,
-										y,
-									},
-									{
-										src: avatarImage,
-										x: 0,
-										y: 0,
-									},															
-								], {
-									height: size,
-									width: size,
-									format: "png"
-								})
-								.then((b64) => (this as unknown as PhotoMerge).previewImage = b64);
-							}
-							tmpImgResized.src = URL.createObjectURL(file);
+					setTimeout(() => {
+						const previewBoxImageRef = this.$refs.previewBoxImage as HTMLDivElement;
+						toPng(previewBoxImageRef).then(dataUrl => {
+							this.previewImage = dataUrl;
 						});
+					}, 2000);
 				}
-				tmpImage.src = URL.createObjectURL(files.item(0));		
 
+				tmpImage.src = URL.createObjectURL(files.item(0));
 			}
 		}
 	}
-}
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -99,6 +70,8 @@ export default {
 		>.upload-foto {
 			position: relative;
 			overflow: hidden;
+			width: 50%;
+			margin: 0px auto;
 			> input[type="file"] {
 				width: 100%;
 				height: 100%;
@@ -109,11 +82,56 @@ export default {
 			}
 		}
 
-		> p > img {
-			border: 1px solid greenyellow;
+		> p > .preview-image {
+			border: 2px solid black;
 			display: block;
 			margin: 0px auto;
+			height: 600px;
+			width: 600px;
+			position: relative;
+			overflow: hidden;
+
+			> .avatar-logo {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-repeat: no-repeat;
+				background-position: 98% 0%;
+			}
+
+			> .photo-img {
+				position: absolute;
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				background-repeat: no-repeat;
+				background-position: center center;
+
+				&.vertical {
+					background-size: auto 100%;
+				}
+				&.horizontal {
+					background-size: 100% auto;
+				}
+			}
+
+			> .photo-bg-img{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				filter: blur(10px);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+			}
+
 		}
+
 		.btn{
 			margin-top:16px;
 			margin-bottom: 16px;
@@ -128,8 +146,8 @@ export default {
 			font-size: 1.2rem;
 			border-radius: 25px;
 			color: #fff;
-			background-color: purple;
-			border-color: purple;
+			background-color: #1e5959;
+			border-color: #1e5959;
 			opacity: .5;
 			&.is-active {
 				opacity: 1;
