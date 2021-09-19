@@ -74,7 +74,7 @@ body, html{
 	}
 
 	> main{
-		width: 600px;
+		width: 500px;
 		margin: 0px auto;
 		grid-area:main;
 	}

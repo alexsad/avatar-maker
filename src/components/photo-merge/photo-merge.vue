@@ -20,7 +20,7 @@ export default defineComponent({
 		return {
 			previewImage: '',
 			photoName: '',
-			avatarImage: require('./assets/guia-s22.png'),
+			avatarImage: require('./assets/avatar-prototype.svg'),
 			bgImg: '',
 			photo: '',
 			photoOrientation: '',
@@ -52,7 +52,7 @@ export default defineComponent({
 						toPng(previewBoxImageRef).then(dataUrl => {
 							this.previewImage = dataUrl;
 						});
-					}, 2000);
+					}, 3000);
 				}
 
 				tmpImage.src = URL.createObjectURL(files.item(0));
@@ -72,6 +72,7 @@ export default defineComponent({
 			overflow: hidden;
 			width: 50%;
 			margin: 0px auto;
+
 			> input[type="file"] {
 				width: 100%;
 				height: 100%;
@@ -82,54 +83,56 @@ export default defineComponent({
 			}
 		}
 
-		> p > .preview-image {
-			border: 2px solid black;
-			display: block;
-			margin: 0px auto;
-			height: 600px;
-			width: 600px;
-			position: relative;
-			overflow: hidden;
+		> p
+			> .preview-image {
+				// border: 2px solid black;
+				display: block;
+				margin: 0px auto;
+				height: 480px;
+				width: 480px;
+				position: relative;
+				overflow: hidden;
+				box-sizing: border-box;
 
-			> .avatar-logo {
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				background-repeat: no-repeat;
-				background-position: 98% 0%;
-			}
-
-			> .photo-img {
-				position: absolute;
-				left: 0;
-				top: 0;
-				height: 100%;
-				width: 100%;
-				background-repeat: no-repeat;
-				background-position: center center;
-
-				&.vertical {
-					background-size: auto 100%;
+				> .avatar-logo {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					background-repeat: no-repeat;
+					background-position: 97% 0%;
+					background-size: 20% auto;
 				}
-				&.horizontal {
-					background-size: 100% auto;
+
+				> .photo-img {
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 100%;
+					width: 100%;
+					background-repeat: no-repeat;
+					background-position: center center;
+
+					&.vertical {
+						background-size: auto 100%;
+					}
+					&.horizontal {
+						background-size: 100% auto;
+					}
 				}
-			}
 
-			> .photo-bg-img{
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				filter: blur(10px);
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center center;
-			}
-
+				> .photo-bg-img{
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					filter: blur(10px);
+					background-repeat: no-repeat;
+					background-size: cover;
+					background-position: center center;
+				}
 		}
 
 		.btn{
