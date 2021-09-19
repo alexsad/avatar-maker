@@ -52,7 +52,7 @@ export default defineComponent({
 						toPng(previewBoxImageRef).then(dataUrl => {
 							this.previewImage = dataUrl;
 						});
-					}, 3000);
+					}, 4000);
 				}
 
 				tmpImage.src = URL.createObjectURL(files.item(0));
@@ -72,6 +72,7 @@ export default defineComponent({
 			overflow: hidden;
 			width: 50%;
 			margin: 0px auto;
+			cursor: pointer;
 
 			> input[type="file"] {
 				width: 100%;
@@ -101,7 +102,7 @@ export default defineComponent({
 					width: 100%;
 					height: 100%;
 					background-repeat: no-repeat;
-					background-position: 97% 0%;
+					background-position: 95% 0%;
 					background-size: 20% auto;
 				}
 
@@ -113,6 +114,7 @@ export default defineComponent({
 					width: 100%;
 					background-repeat: no-repeat;
 					background-position: center center;
+					// box-shadow: 0px 0px 15px 3px #000000;
 
 					&.vertical {
 						background-size: auto 100%;
