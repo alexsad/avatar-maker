@@ -49,7 +49,7 @@ body, html{
 	// grid-gap:16px;
 
 	> header {
-		background-color: purple;
+		background-color: #1e5959;
 		color: #efefef;
 		grid-area:header;
 		position: relative;
@@ -74,13 +74,13 @@ body, html{
 	}
 
 	> main{
-		width: 400px;
+		width: 500px;
 		margin: 0px auto;
 		grid-area:main;
 	}
 	> footer{
 		grid-area:footer;
-		background-color: purple;
+		background-color: #1e5959;
 		display: table;
 		height: 100%;
 
