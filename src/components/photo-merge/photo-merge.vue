@@ -1,14 +1,17 @@
 <template lang='pug'>
 .photo-merge
-	div.upload-foto.btn.is-active {{$translate('app.upload')}}
-		input.btn(type="file" @change="previewPhoto")
-	p
-		.preview-image(ref="previewBoxImage")
-			.photo-bg-img(:class="photoOrientation" :style="{backgroundImage: 'url('+bgImg+')'}")
-			.photo-img(:class="photoOrientation" :style="{backgroundImage: 'url('+photo+')'}")
-			.avatar-logo(:style="{backgroundImage: 'url('+avatarImage+')'}")
-	p
-		a.btn.is-active(v-if="previewImage" :download="photoName" :href="previewImage" title="download") {{$translate('app.download')}}
+	.photo-upload(v-if="!previewImage")
+		.btn(v-if="isLoading")
+			img(:src="loadinIcon")
+		.upload-foto.btn.is-active(v-if="!previewImage && !isLoading") {{$translate('app.upload')}}
+			input.btn(type="file" @change="previewPhoto")
+	.photo-actions(v-if="previewImage")
+		a.download-btn.btn.is-active(:download="photoName" :href="previewImage" title="download") {{$translate('app.download')}}
+		a.reset-btn.btn.is-active(href="?reset" title="reset") {{$translate('app.reset')}}
+	.preview-image(ref="previewBoxImage")
+		.photo-bg-img(:class="photoOrientation" :style="{backgroundImage: 'url('+bgImg+')'}")
+		.photo-img(:class="photoOrientation" :style="{backgroundImage: 'url('+photo+')'}")
+		.avatar-logo(v-if="photoOrientation" :style="{backgroundImage: 'url('+avatarImage+')'}")
 </template>
 
 <script lang="ts">
@@ -21,9 +24,11 @@ export default defineComponent({
 			previewImage: '',
 			photoName: '',
 			avatarImage: require('./assets/avatar-prototype.svg'),
+			loadinIcon: require('./assets/ajax-loader.gif'),
 			bgImg: '',
 			photo: '',
 			photoOrientation: '',
+			isLoading: false,
 		}
 	},
 	methods: {
@@ -47,9 +52,13 @@ export default defineComponent({
 						this.photoOrientation = 'horizontal';
 					}
 
+					this.isLoading = true;
+
 					setTimeout(() => {
 						const previewBoxImageRef = this.$refs.previewBoxImage as HTMLDivElement;
-						toPng(previewBoxImageRef).then(dataUrl => {
+						toPng(previewBoxImageRef, {width: 500, height: 500, style:{
+							position: 'absolute'
+						}}).then(dataUrl => {
 							this.previewImage = dataUrl;
 						});
 					}, 4000);
@@ -67,33 +76,43 @@ export default defineComponent({
 	.photo-merge{
 		margin-bottom: 2px;
 
-		>.upload-foto {
-			position: relative;
-			overflow: hidden;
-			width: 50%;
-			margin: 0px auto;
-			cursor: pointer;
+		> .photo-upload {
+			display: flex;
+			justify-content: center;
+			padding: 1.6rem;
 
-			> input[type="file"] {
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				opacity: 0;
+			> .upload-foto {
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+
+				> input[type="file"] {
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					opacity: 0;
+				}
 			}
 		}
 
-		> p
-			> .preview-image {
-				// border: 2px solid black;
-				display: block;
-				margin: 0px auto;
-				height: 480px;
-				width: 480px;
+		> .photo-actions {
+			display: flex;
+			justify-content: space-between;
+			padding: 1.6rem;
+		}
+
+		> .preview-image {
+				// border: 1px solid black;
+				background-color: #173f60;
+				// display: block;
+				// margin: 0px auto;
+				height: 500px;
+				width: 500px;
 				position: relative;
 				overflow: hidden;
-				box-sizing: border-box;
+				// box-sizing: border-box;
 
 				> .avatar-logo {
 					position: absolute;
@@ -136,27 +155,31 @@ export default defineComponent({
 					background-position: center center;
 				}
 		}
-
-		.btn{
-			margin-top:16px;
-			margin-bottom: 16px;
+		.btn {
 			text-align: center;
 			border-width: 1px;
 			border-style: solid;
 			line-height: 1.5;
 			transition: border-color 0.2s, background-color 0.2s, color 0.2s;
-			padding: 0.5em 1em;
+			padding: 0.5em;
 			outline: 0;
-			min-width: 250px;
 			font-size: 1.2rem;
 			border-radius: 25px;
 			color: #fff;
-			background-color: #1e5959;
-			border-color: #1e5959;
+			background-color: #173f60;
+			border-color: #173f60;
 			opacity: .5;
+			height: 25px;
+			text-decoration: none;
 			&.is-active {
 				opacity: 1;
 			}
 		}
+
+		.btn.reset-btn {
+			background-color: #d0c221;
+			color: black;
+		}
+
 	}
 </style>

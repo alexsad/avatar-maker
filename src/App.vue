@@ -49,7 +49,7 @@ body, html{
 	// grid-gap:16px;
 
 	> header {
-		background-color: #1e5959;
+		background-color: #173f60;
 		color: #efefef;
 		grid-area:header;
 		position: relative;
@@ -80,7 +80,7 @@ body, html{
 	}
 	> footer{
 		grid-area:footer;
-		background-color: #1e5959;
+		background-color: #173f60;
 		display: table;
 		height: 100%;
 

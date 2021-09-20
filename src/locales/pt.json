@@ -2,6 +2,7 @@
   "app":{
     "title": "Criador de Avatar",
     "upload": "Carregar uma foto",
-    "download": "Baixar o avatar"
+    "download": "Baixar o avatar",
+    "reset": "Limpar a foto"
   }
 }

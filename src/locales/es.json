@@ -2,6 +2,7 @@
   "app":{
     "title": "Avatar Make",
     "upload": "Upload your picture",
-    "download": "Download your avatar"
+    "download": "Download your avatar",
+    "reset": "Reset the pricture"
   }
 }
