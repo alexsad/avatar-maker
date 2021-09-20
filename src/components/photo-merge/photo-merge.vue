@@ -38,7 +38,7 @@ export default defineComponent({
 				const tmpImage = new Image();
 
 				tmpImage.onload = () => {
-					console.log(tmpImage.width, tmpImage.height);
+					// console.log(tmpImage.width, tmpImage.height);
 					const {width, height} = tmpImage;
 
 					if(height > width){
