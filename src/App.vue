@@ -1,9 +1,8 @@
 <template>
 	<header>
-		<a class="logo" href="https://alexsad.github.io/avatar-maker/">
-			<img alt="Site logo" src="./assets/gift-box-white.svg">
-		</a>
-		<h1>{{$translate('app.title')}}</h1>
+		<a class="logo" href="https://alexsad.github.io/avatar-maker/"></a>
+		<div class="title">{{$translate('app.title')}}</div>
+		<div class="empty"></div>
 	</header>
 	<main>
 		<PhotoMerge/>
@@ -53,24 +52,31 @@ body, html{
 		color: #efefef;
 		grid-area:header;
 		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: .1rem;
+
+		> .empty{
+			height: 55px;
+			width: 55px;
+		}
 
 		> a.logo{
-			position: absolute;
-			bottom: -16%;
-			left: 16px;
-			> img{
-				width: 85px;
-			}
+			height: 65px;
+			width: 65px;
+			background-image: url(./assets/logo-prototype-outline.svg);
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
 		}
 
-		> h1{
-			margin: 0;
-			position: absolute;
-			top: 50%;
-			width: 100%;
+		> .title{
 			text-align: center;
-			transform: translateY(-50%);
+			font-size: 1.8rem;
+			flex-grow: 1;
 		}
+
 	}
 
 	> main{
