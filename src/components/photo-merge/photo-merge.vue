@@ -23,7 +23,7 @@ export default defineComponent({
 		return {
 			previewImage: '',
 			photoName: '',
-			avatarImage: require('./assets/avatar-prototype.svg'),
+			avatarImage: require('./assets/goat-avatar-prototype.png'),
 			loadinIcon: require('./assets/ajax-loader.gif'),
 			bgImg: '',
 			photo: '',
@@ -121,8 +121,8 @@ export default defineComponent({
 					width: 100%;
 					height: 100%;
 					background-repeat: no-repeat;
-					background-position: 95% 0%;
-					background-size: 20% auto;
+					background-position: 5% 6%;
+					background-size: 22% auto;
 				}
 
 				> .photo-img {

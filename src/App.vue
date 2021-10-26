@@ -1,6 +1,6 @@
 <template>
 	<header>
-		<a class="logo" href="https://alexsad.github.io/avatar-maker/"></a>
+		<a class="logo" href="?reset2"></a>
 		<div class="title">{{$translate('app.title')}}</div>
 		<div class="empty"></div>
 	</header>
