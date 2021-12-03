@@ -11,7 +11,7 @@
 	.preview-image(ref="previewBoxImage")
 		.photo-bg-img(:class="photoOrientation" :style="{backgroundImage: 'url('+bgImg+')'}")
 		.photo-img(:class="photoOrientation" :style="{backgroundImage: 'url('+photo+')'}")
-		.avatar-logo(v-if="photoOrientation" :style="{backgroundImage: 'url('+avatarImage+')'}")
+		//- .avatar-logo(v-if="photoOrientation" :style="{backgroundImage: 'url('+avatarImage+')'}")
 </template>
 
 <script lang="ts">
@@ -113,6 +113,8 @@ export default defineComponent({
 				position: relative;
 				overflow: hidden;
 				// box-sizing: border-box;
+				background-image: url('./assets/avatar-bg-s23.png');
+				background-size: cover;
 
 				> .avatar-logo {
 					position: absolute;
@@ -127,13 +129,14 @@ export default defineComponent({
 
 				> .photo-img {
 					position: absolute;
-					left: 0;
-					top: 0;
-					height: 100%;
-					width: 100%;
+					left: 12%;
+					top: 14%;
+					height: 76%;
+					width: 76%;
 					background-repeat: no-repeat;
 					background-position: center center;
 					// box-shadow: 0px 0px 15px 3px #000000;
+					// border:4px solid pink;
 
 					&.vertical {
 						background-size: auto 100%;
@@ -145,14 +148,16 @@ export default defineComponent({
 
 				> .photo-bg-img{
 					position: absolute;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
-					filter: blur(10px);
+					left: 12%;
+					top: 14%;
+					height: 76%;
+					width: 76%;
+					filter: blur(5px);
 					background-repeat: no-repeat;
 					background-size: cover;
 					background-position: center center;
+					// border:4px solid red;
+					// display: none;
 				}
 		}
 		.btn {

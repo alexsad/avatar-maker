@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://goat-avatar-maker.netlify.app",
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build --dest docs",
     "lint": "vue-cli-service lint"
   },
