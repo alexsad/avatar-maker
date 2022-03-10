@@ -4,7 +4,7 @@ module.exports = {
 		name:'Avatar Maker'
 	},
 
-    publicPath: process.env.NODE_ENV === 'production'
-		? '/avatar-maker/'
-		: '/',
+    // publicPath: process.env.NODE_ENV === 'production'
+		// ? '/avatar-maker/'
+		// : '/',
 }

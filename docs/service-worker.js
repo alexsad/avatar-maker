@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/avatar-maker/precache-manifest.33cb8fb3b6c2b979ff7339a3f7bbda53.js"
+  "/precache-manifest.141f794bdbaf45231ac4ca98eb3e31e3.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "avatar-maker"});
