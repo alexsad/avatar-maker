@@ -20,7 +20,7 @@ export default defineComponent({
 		return {
 			previewImage: '',
 			photoName: '',
-			avatarImage: require('./assets/avatar-prototype.svg'),
+			avatarImage: require('./assets/avatar-prototype-s24.svg'),
 			bgImg: '',
 			photo: '',
 			photoOrientation: '',
