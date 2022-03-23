@@ -11,7 +11,7 @@
 	.preview-image(ref="previewBoxImage")
 		.photo-bg-img(:class="photoOrientation" :style="{backgroundImage: 'url('+bgImg+')'}")
 		.photo-img(:class="photoOrientation" :style="{backgroundImage: 'url('+photo+')'}")
-		//- .avatar-logo(v-if="photoOrientation" :style="{backgroundImage: 'url('+avatarImage+')'}")
+		.avatar-logo(:style="{backgroundImage: 'url('+avatarImage+')'}")
 </template>
 
 <script lang="ts">
@@ -23,7 +23,7 @@ export default defineComponent({
 		return {
 			previewImage: '',
 			photoName: '',
-			avatarImage: require('./assets/goat-avatar-prototype.png'),
+			avatarImage: require('./assets/season-24-title.png'),
 			loadinIcon: require('./assets/ajax-loader.gif'),
 			bgImg: '',
 			photo: '',
@@ -39,7 +39,7 @@ export default defineComponent({
 
 				this.bgImg = URL.createObjectURL(files.item(0));
 				this.photo = URL.createObjectURL(files.item(0));
-				this.photoName = `avatar-s22-${new Date().getTime()}.png`;
+				this.photoName = `avatar-s24-${new Date().getTime()}.png`;
 				const tmpImage = new Image();
 
 				tmpImage.onload = () => {
@@ -113,18 +113,17 @@ export default defineComponent({
 				position: relative;
 				overflow: hidden;
 				// box-sizing: border-box;
-				background-image: url('./assets/avatar-bg-s23.png');
+				background-image: url('./assets/avatar-bg-s24.png');
 				background-size: cover;
 
 				> .avatar-logo {
 					position: absolute;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
+					left: 39px;
+					top: 1px;
+					width: 419px;
+					height: 152px;
+					background-size: contain;
 					background-repeat: no-repeat;
-					background-position: 5% 6%;
-					background-size: 22% auto;
 				}
 
 				> .photo-img {
@@ -148,11 +147,11 @@ export default defineComponent({
 
 				> .photo-bg-img{
 					position: absolute;
-					left: 12%;
+					left: 3%;
 					top: 14%;
 					height: 76%;
-					width: 76%;
-					filter: blur(5px);
+					width: 94%;
+					filter: blur(4px);
 					background-repeat: no-repeat;
 					background-size: cover;
 					background-position: center center;
