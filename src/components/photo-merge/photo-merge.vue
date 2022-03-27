@@ -11,7 +11,7 @@
 	.preview-image(ref="previewBoxImage")
 		.photo-bg-img(:class="photoOrientation" :style="{backgroundImage: 'url('+bgImg+')'}")
 		.photo-img(:class="photoOrientation" :style="{backgroundImage: 'url('+photo+')'}")
-		.avatar-logo(:style="{backgroundImage: 'url('+avatarImage+')'}")
+		.avatar-decoration(:style="{backgroundImage: 'url('+avatarDecoration+')'}")
 </template>
 
 <script lang="ts">
@@ -23,7 +23,7 @@ export default defineComponent({
 		return {
 			previewImage: '',
 			photoName: '',
-			avatarImage: require('./assets/season-24-title.png'),
+			avatarDecoration: require('./assets/season-24-decoration.png'),
 			loadinIcon: require('./assets/ajax-loader.gif'),
 			bgImg: '',
 			photo: '',
@@ -116,12 +116,12 @@ export default defineComponent({
 				background-image: url('./assets/avatar-bg-s24.png');
 				background-size: cover;
 
-				> .avatar-logo {
+				> .avatar-decoration {
 					position: absolute;
-					left: 39px;
-					top: 1px;
-					width: 419px;
-					height: 152px;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
 					background-size: contain;
 					background-repeat: no-repeat;
 				}
@@ -147,7 +147,7 @@ export default defineComponent({
 
 				> .photo-bg-img{
 					position: absolute;
-					left: 3%;
+					left: 17px;
 					top: 14%;
 					height: 76%;
 					width: 94%;
