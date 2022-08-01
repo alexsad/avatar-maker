@@ -113,7 +113,7 @@ export default defineComponent({
 				position: relative;
 				overflow: hidden;
 				// box-sizing: border-box;
-				background-image: url('./assets/avatar-bg-s24.png');
+				background-image: url('./assets/avatar-bg-no-s.png');
 				background-size: cover;
 
 				> .avatar-decoration {
